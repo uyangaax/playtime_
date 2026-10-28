@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playtime Festival</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+
+      body {
+        background-color: #0f0f1c;
+      }
+
+      .page {
+        width: 1120px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      nav {
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 3px 25px 16px -16px rgba(228, 181, 255, 0.22);
+      }
+
+      nav h1 {
+        color: aliceblue;
+      }
+
+      .links {
+        display: flex;
+        gap: 30px;
+      }
+
+      a {
+        color: aliceblue;
+        text-decoration: none;
+      }
+
+      .links a.active {
+        text-decoration: underline;
+        text-decoration-color: #e4b5ff;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+      }
+
+      button {
+        box-shadow: 0px 0px 40px;
+        height: 40px;
+        width: 140px;
+        background-color: #e4b5ff;
+        color: purple;
+        border: none;
+        border-radius: 20px;
+        padding: 15px;
+        text-align: center;
+        transition: 0.4s;
+      }
+      button:hover {
+        transform: scale3d(1.1, 1.1, 1);
+        transition: 0.4s;
+      }
+
+      .hero {
+        margin: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hero h1 {
+        color: #e4b5ff;
+        margin: 0;
+        transition: 0.4s;
+      }
+      .hero h1:hover {
+        transform: scale3d(1.1, 1.1, 1);
+        transition: 0.4s;
+      }
+
+      .hero-text {
+        color: #ffffff;
+      }
+
+      .hero-text h1 {
+        font-family: sans-serif;
+        font-weight: 800;
+
+        letter-spacing: -0.02em;
+
+        background: linear-gradient(90deg, #e4b5ff 0%, #78abf8 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-size: 66px;
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
+
+      .para {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+        color: #8ec5ff;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+
+      .para-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .para-item p {
+        font-size: 15px;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .icon {
+        width: 10px;
+        height: 10px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .para-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #8ec5ff;
+        opacity: 0.6;
+      }
+
+      .para2 p {
+        max-width: 420px;
+        line-height: 1.6;
+        color: #cfcfdc;
+      }
+
+      .btn {
+        border-color: #002f6e;
+        box-shadow: 0px 0px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        font-size: 16px;
+        text-align: center;
+        color: #002f6e;
+        margin: 30px;
+        background-color: #a7c7ff;
+        transition: 0.4s;
+        gap: 10px;
+      }
+      .btn b {
+        display: flex;
+      }
+
+      .btn-icon {
+        object-fit: contain;
+        width: 20px;
+        height: 20px;
+      }
+      #btn:hover {
+        transform: scale3d(1.1, 1.1, 1);
+        transition: 0.4s;
+      }
+      .zurag {
+        width: 550px;
+        height: 500px;
+        border-radius: 48px;
+        box-shadow: 0px 0px 40px rgba(173, 198, 255, 0.2);
+        object-fit: cover;
+        transition: 0.6s;
+      }
+      .zurag:hover {
+        transition: 0.6s;
+        transform: scale3d(1.1, 1.1, 1);
+      }
+
+      .head {
+        display: flex;
+      }
+
+      #head-text {
+        font-size: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #e4b5ff;
+        width: 100%;
+      }
+
+      #head-text p {
+        font-size: 15px;
+        margin: 14px;
+        color: #9498a1;
+      }
+
+      .img {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        
+      }
+      img{
+        width: 370px;
+        box-shadow: 0px 0px 40px rgba(130, 130, 200, 0.2);
+        transition: 0.4s;
+        border-radius: 12px;
+      }
+
+      img:hover {
+        transform: scale3d(1.1, 1.1, 1);
+        transition: 0.4s;
+      }
+
+      .main {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 140px;
+        padding: 20px;
+        border-radius: 12px;
+        background: #1e1e2e;
+        text-align: center;
+      }
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .label {
+        margin: 0;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #9a9ab0;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #ffffff;
+      }
+
+      .timer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .timer h1 {
+        color: #a7c7ff;
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .days {
+        border-radius: 20px;
+        display: flex;
+        gap: 30px;
+      }
+
+      .days p {
+        color: #9498a1;
+        font-size: 18px;
+        transition: 0.4s;
+      }
+      .days P:hover {
+        transform: scale3d(1.1, 1.1, 1);
+        transition: 0.4s;
+      }
+
+      .days p.active {
+        color: #e4b5ff;
+        font-weight: 700;
+      }
+
+      .tsag {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 15px;
+}
+
+.tsag1 {
+  gap: 350px;
+  background-color: #1f1e2c;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#ac1 { color: #a78bfa; }   /* ягаан-нил */
+#ac2 { color: #f472b6; }   /* ягаан */
+#ac3 { color: #7dd3fc; }   /* цэнхэр */
+
+.info {
+ 
+  display: flex;
+  flex-direction: column;   /* h4 дээрээ, p доор */
+  gap: 5px;
+  margin-right: auto;       /* дараагийн элементийг баруун тийш түлхэнэ */
+}
+
+.info h4 {
+  
+  font-size: 20px;
+  margin: 0;
+  color: #fff;
+}
+
+.info p {
+  
+  margin: 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+
+
+      .tsag1 button {
+        width: auto;
+        height: auto;
+        padding: 8px 16px;
+        font-size: 12px;
+        background-color: rgba(167, 199, 255, 0.15);
+        color: #a7c7ff;
+        border-radius: 999px;
+        transition: 0.4s;
+      }
+      .tsag1 button:hover {
+        transition: 0.4s;
+        transform: scale3d(1.1, 1.1, 1);
+      }
+
+      .tsag1 h4 {
+        color: aliceblue;
+      }
+
+      .tsag1 #ac1 {
+        font-size: 30px;
+        color: #e4b5ff;
+      }
+
+      .tsag1 #ac2 {
+        font-size: 30px;
+        color: #f7a3c4;
+      }
+
+      .tsag1 #ac3 {
+        font-size: 30px;
+        color: #a3c2f9;
+      }
+      .stage {
+        box-shadow: 0px 0px 40px rgba(130, 130, 200, 0.2);
+      }
+
+      .our-text {
+        display: flex;
+        color: #e4b5ff;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .our-text .act {
+        height: 100px;
+        color: #a3c2f9;
+      }
+
+      .box {
+        margin: 20px;
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      .card-1 {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 24px;
+        background-color: #171724;
+        border-radius: 20px;
+      }
+
+      .card-2 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+        background-color: #171724;
+        border-radius: 20px;
+      }
+
+      .small {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 22px 24px;
+        background-color: #1f1e2c;
+        color: aliceblue;
+        border-radius: 10px;
+        text-align: center;
+        flex: 1;
+      }
+      .small1 {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        padding: 22px 24px;
+        background-color: #1f1e2c;
+        color: aliceblue;
+        border-radius: 10px;
+        text-align: center;
+        flex: 1;
+      }
+      .icon-overlay {
+        margin: 10px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        display: block;
+      }
+      footer {
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 3px 25px 16px -16px rgba(228, 181, 255, 0.22);
+      }
+      footer h1 {
+        color: aliceblue;
+      }
+      footer p {
+        font-size: small;
+        color: rgb(108, 113, 118);
+      }
+      .guraw{
+        gap: 18px;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 3px 25px 16px -16px rgba(228, 181, 255, 0.22);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- Navigation -->
+      <nav>
+        <h1>playtime</h1>
+
+        <div class="links">
+          <a href="">Lineup</a>
+          <a href="">Schedule</a>
+          <a href="" class="active">Tickets</a>
+        </div>
+
+        <button><b> Get Tickets </b></button>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="hero">
+        <div class="hero-text">
+          <h1>PLAYTIME</h1>
+          <h1>FESTIVAL</h1>
+
+          <div class="para">
+            <span class="para-item">
+              <img class="icon" src="Icon 2.png" alt="" />
+              <p>JULY 15-17, 2024</p>
+            </span>
+
+            <span class="para-dot"></span>
+
+            <span class="para-item">
+              <img class="icon" src="sum.png" alt="" />
+              <p>NEON CITY PARK</p>
+            </span>
+          </div>
+
+          <div class="para2">
+            <p>
+              The ultimate summer music experience for song musical the next
+              generation. Three days of non-stop beats, vibrant lights, and
+              unforgettable memories.
+            </p>
+
+            <button class="btn">
+              <b>Join the Beat</b>
+              <img class="btn-icon" src="sum.png" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <img class="zurag" src="hero-image.png" alt="Festival" />
+      </div>
+
+      <!-- Meet the Headliners -->
+      <div class="head">
+        <div id="head-text">
+          <h1>MEET THE HEADLINERS</h1>
+          <p>The biggest acts lighting up the main stage this summer</p>
+        </div>
+      </div>
+
+      <div class="img">
+        <img src="Card 1 (2).png" alt="Headliner 1" />
+        <img src="Card 2 (2).png" alt="Headliner 2" />
+        <img src="Card 3 (4).png" alt="Headliner 3" />
+      </div>
+
+      <!-- Festival Info -->
+      <div class="main">
+        <div class="card">
+          <img class="icon" src="july.png" alt="" />
+          <p class="label">DATE</p>
+          <h3>July 15-17</h3>
+        </div>
+
+        <div class="card">
+          <img class="icon" src="neon.png" alt="" />
+          <p class="label">LOCATION</p>
+          <h3>Neon City</h3>
+        </div>
+
+        <div class="card">
+          <img class="icon" src="price.png" alt="" />
+          <p class="label">PRICE</p>
+          <h3>$99 (3-Day Pass)</h3>
+        </div>
+      </div>
+
+      <!-- Festival Schedule -->
+      <div class="timer">
+        <h1>FESTIVAL SCHEDULE</h1>
+
+        <div class="days">
+          <p class="active">day 1</p>
+          <p>day 2</p>
+          <p>day 3</p>
+        </div>
+      </div>
+
+     <div class="tsag">
+  <div class="tsag1">
+    <p id="ac1">2:00 PM</p>
+    <div class="info">
+      <h4>Nova Sky</h4>
+      <p> <img style="width: 10px;" src="main.png" alt="" /> Main Stage</p>
+    </div>
+    <button   class="stage"  >  Main Stage</button>
+  </div>
+
+  <div class="tsag1">
+    <p id="ac2">5:00 PM</p>
+    <div class="info">
+      <h4>The Echoes</h4>
+      <p  > <img style="width: 10px;" src="main.png" alt="" /> Main Stage</p>
+    </div>
+    <button class="stage">Main Stage</button>
+  </div>
+
+  <div class="tsag1">
+    <p id="ac3">9:00 PM</p>
+    <div class="info">
+      <h4>DJ Pulse</h4>
+      <p> <img style="width: 10px;" src="main.png" alt="" /> Main Stage</p>
+    </div>
+    <button class="stage">Main Stage</button>
+  </div>
+</div>
+
+      <!-- Sponsors -->
+      <div class="gol">
+        <div class="our-text">
+          <h1>OUR SPONSORS</h1>
+          <h1 class="act">STRATEGIC PARTNERS</h1>
+        </div>
+
+        <div class="box">
+          <div class="card-1">
+            <div class="small">
+              <img class="icon-overlay" src="sound.png" alt="" />
+              <p>SOUNDWAVE AUDIO</p>
+            </div>
+            <div class="small">
+              <img class="icon-overlay" src="eclipse.png" alt="" />
+              <p>ECLIPSE STAGE</p>
+            </div>
+            <div class="small">
+              <img class="icon-overlay" src="quantum.png" alt="" />
+              <p>QUANTUM CONNECTIVITY</p>
+            </div>
+            <div class="small">
+              <img class="icon-overlay" src="harmony.png" alt="" />
+              <p>HARMONY FINANCIAL</p>
+            </div>
+          </div>
+
+          <div class="card-2">
+            <div class="small1">
+              <img
+                style="width: 20px; margin: 10px"
+                src="Icon (1).png"
+                alt=""
+              />
+              <p>SONIC SYNC MEDIA</p>
+            </div>
+            <div class="small1">
+              <img style="width: 20px; margin: 10px" src="nexus.png" alt="" />
+              <p>NEXUS AUDIO TECH</p>
+            </div>
+            <div class="small1">
+              <img
+                style="width: 20px; margin: 10px"
+                src="streamflow.png"
+                alt=""
+              />
+              <p>STREAMFLOW LIVE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <h1>playtime</h1>
+
+        <div class="links">
+          <p>2024 NEON BEAT FESTIVAL ALL RIGHTS RESERVED</p>
+        </div>
+<div class="guraw">
+        <p>PRIVACY</p>
+        <p>TERMS</p>
+        <p>SAFETY</p>
+      </footer>
+    </div>
+  </body>
+</html>
